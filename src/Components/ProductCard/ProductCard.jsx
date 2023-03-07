@@ -1,3 +1,5 @@
+import "./ProductCard.css";
+
 const ProductCard = ({ title, price = 0, isRed }) => {
   const saludar = () => {
     console.log("hola");
