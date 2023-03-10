@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <ItemListContainer greeting={"Bienvenidos a Macreame"} />
+      <ItemListContainer />
       <ProductCard title={"Producto uno"} price={200} isRed={false} />
       <ItemCount />
     </div>

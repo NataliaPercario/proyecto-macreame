@@ -1,16 +1,22 @@
+import { useState } from "react";
+
 const ItemCount = () => {
-  let contador = 0;
+  const [contador, setContador] = useState(0);
 
   const sumar = () => {
-    contador++;
+    setContador(contador + 1);
   };
 
+  const restar = () => {
+    setContador(contador - 1);
+  };
+  
   return (
     <div>
       <h1>Estoy en el itemCount</h1>
       <h2> {contador}</h2>
       <button onClick={sumar}>Sumar</button>
-      <button>Restar</button>
+      <button onClick={restar}>Restar</button>
     </div>
   );
 };
