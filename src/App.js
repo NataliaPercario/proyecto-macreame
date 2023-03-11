@@ -10,9 +10,9 @@ function App() {
   return (
     <div>
       <Navbar />
-      {/*<ItemListContainer />
+      <ItemListContainer />
       {/*<ProductCard title={"Producto uno"} price={200} isRed={false} /> */}
-      <ItemCount stock={5} initial={1} onAdd={onAdd} />
+      {/*<ItemCount stock={5} initial={1} onAdd={onAdd} />*/}
     </div>
   );
 }
