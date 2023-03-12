@@ -1,13 +1,20 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { products } from "../../ProductsMock";
 import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = () => {
+  const { categoryName } = useParams();
+
   const [items, setItems] = useState([]);
+
+  const productosFiltrados = products.filter(
+    (elemento) => elemento.category === categoryName
+  );
 
   useEffect(() => {
     const productList = new Promise((resolve, reject) => {
-      resolve(products);
+      resolve(categoryName ? productosFiltrados : products);
     });
 
     productList
@@ -17,35 +24,11 @@ const ItemListContainer = () => {
       .catch((error) => {
         console.log(error);
       });
-  });
-
-  console.log(items);
-
-  return(
-    <div>
-      <ItemList items={items}/>
-    </div>
-  )
-  /* const [nombre, setNombre] = useState("pepito");
-  const [contador, setContador] = useState(0);
-
-  const cambiarContador = () => {
-    setNombre();
-  };
-  const cambiarNombre = () => {
-    setNombre("Natalia");
-  };
-  useEffect(() => {
-    setNombre("carmen");
-    console.log("me ejecute una vez");
-  });
-*/
+  }, [categoryName]);
 
   return (
     <div>
-      <h1>Estoy en el itemList</h1>
-      {/* <h1>Hola {nombre} como estas</h1>
-      <button onClick={cambiarNombre}>Cambiar a Natalia</button>*/}
+      <ItemList items={items} />
     </div>
   );
 };

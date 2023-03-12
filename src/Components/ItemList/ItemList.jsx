@@ -5,13 +5,14 @@ const ItemList = ({ items }) => {
   return (
     <div
       style={{
-        backgroundColor: "black",
+        backgroundColor: "#929BF0",
         display: "flex",
         width: "100%",
         minHeigt: "100vw",
         justifyContent: "space-evenly",
         alignItems: "center",
         flexWrap: "wrap",
+        padding: 30
       }}
     >
       {items.map((element) => {
