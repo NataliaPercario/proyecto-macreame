@@ -1,8 +1,11 @@
+import { Button } from "@mui/material";
 import React, { useContext } from "react";
+
 import { CartContext } from "../../Context/CartContext";
 
 const Cart = () => {
-  const { cart, clearCart, getTotalPrice } = useContext(CartContext);
+  const { cart, clearCart, getTotalPrice, deleteProduct } =
+    useContext(CartContext);
 
   const totalPrice = getTotalPrice();
 
@@ -17,6 +20,7 @@ const Cart = () => {
             <img src={elemento.img} alt="" style={{ width: "200px" }} />
             <h3>Cantidad:{elemento.quantity}</h3>
             <h3>{elemento.price}</h3>
+            <Button onClick={() => deleteProduct(elemento.id)}>Eliminar</Button>
           </div>
         );
       })}
