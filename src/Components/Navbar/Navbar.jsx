@@ -1,11 +1,26 @@
 import CartWidget from "../CartWidget/CartWidget";
-
 import styles from "./Navbar.module.css";
-
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebaseConfig";
 
 const Navbar = ({ children }) => {
-  let numero = 12;
+  const [categoryList, setCategoryList] = useState([]);
+
+  useEffect(() => {
+    const productsCollection = collection(db, "categories");
+    getDocs(productsCollection).then((res) => {
+      let totalCategories = res.docs.map((category) => {
+        return {
+          ...category.data(),
+          id: category.id,
+        };
+      });
+      setCategoryList(totalCategories);
+    });
+  }, []);
+
   return (
     <div>
       <div className={styles.containerNavbar}>
@@ -18,21 +33,19 @@ const Navbar = ({ children }) => {
           />
         </Link>
         <ul className={styles.containerList}>
-          
-          <Link to="/category/anillos" style={{ textDecoration: "none" }}>
-            Anillos
-          </Link>
-          <Link to="/category/collares" style={{ textDecoration: "none" }}>
-            Collares
-          </Link>
-          <Link to="/category/aros" style={{ textDecoration: "none" }}>
-            Aros
-          </Link>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            Todas
-          </Link>
+          {categoryList.map((category) => {
+            return (
+              <Link
+                key={category.id}
+                to={category.path}
+                className={{ textDecoration: "none" }}
+              >
+                {category.title}
+              </Link>
+            );
+          })}
         </ul>
-        <CartWidget numero={numero} />
+        <CartWidget />
       </div>
       {children}
     </div>
