@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../firebaseConfig";
-
-import ItemList from "../ItemList/ItemList";
+import ItemList from "./ItemList";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import RingLoader from "react-spinners/RingLoader";
 
 const ItemListContainer = () => {
   const { categoryName } = useParams();
@@ -42,9 +42,19 @@ const ItemListContainer = () => {
 
   return (
     <div>
-      <ItemList items={items} />
+      {items.length > 0 ? (
+        <ItemList items={items} />
+      ) : (
+        <RingLoader
+          color={"blue"}
+          //loading={items.length === 0}
+          //cssOverride={override}
+          size={150}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      )}
     </div>
   );
 };
-
 export default ItemListContainer;

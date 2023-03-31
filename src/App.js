@@ -1,10 +1,10 @@
 import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
 import Navbar from "./Components/Navbar/Navbar";
 
-import ItemCount from "./Components/ItemCount/ItemCount";
-import ConsumiendoApis from "./Components/ConsumiendoApis/ConsumiendoApis";
+import ItemCount from "./Components/ItemDetailContainer/ItemCount";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Cart from "./Components/Cart/Cart";
+import Cart from "./Components/Navbar/Cart";
 import Login from "./Components/Login/Login";
 import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailContainer";
 import Form from "./Components/Form/Form";

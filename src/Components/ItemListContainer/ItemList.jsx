@@ -1,5 +1,5 @@
 import React from "react";
-import Item from "../Item/Item";
+import Item from "./Item";
 
 const ItemList = ({ items }) => {
   return (
@@ -12,7 +12,7 @@ const ItemList = ({ items }) => {
         justifyContent: "space-evenly",
         alignItems: "center",
         flexWrap: "wrap",
-        padding: 30
+        padding: 30,
       }}
     >
       {items.map((element) => {
