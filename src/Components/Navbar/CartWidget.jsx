@@ -11,11 +11,11 @@ const CartWidget = () => {
 
   return (
     <Link to="/Cart">
-      <div className="container-cart">
+      <div className="cart-container">
         <ShoppingCartIcon
           style={{
             fontSize: "2rem",
-            color: "green",
+            color: "grey",
           }}
         />
         <div className="bubble-counter">

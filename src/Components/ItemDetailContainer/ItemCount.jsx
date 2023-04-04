@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./ItemCount.css";
 
 const ItemCount = ({ stock, initial = 1, onAdd }) => {
   const [contador, setContador] = useState(initial);
@@ -18,11 +19,13 @@ const ItemCount = ({ stock, initial = 1, onAdd }) => {
   };
 
   return (
-    <div>
-      <h2> {contador}</h2>
-      <button onClick={sumar}>Sumar</button>
-      <button onClick={restar}>Restar</button>
-      <button onClick={() => onAdd(contador)}>Agregar al carrito</button>
+    <div className="btn-container">
+      <h3>Cantidad: {contador}</h3>
+      <div className="btns">
+        <button onClick={sumar}>Sumar</button>
+        <button onClick={restar}>Restar</button>
+        <button onClick={() => onAdd(contador)}>Agregar al carrito</button>
+      </div>
     </div>
   );
 };

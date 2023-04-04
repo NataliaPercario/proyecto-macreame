@@ -4,15 +4,18 @@ import Item from "./Item";
 const ItemList = ({ items }) => {
   return (
     <div
+      className="items"
       style={{
-        backgroundColor: "#929BF0",
+        backgroundColor: "#929bf0",
         display: "flex",
         width: "100%",
-        minHeigt: "100vw",
+        height: "80vh",
         justifyContent: "space-evenly",
         alignItems: "center",
         flexWrap: "wrap",
         padding: 30,
+        paddingBottom: "30%",
+        gap: "30px",
       }}
     >
       {items.map((element) => {
